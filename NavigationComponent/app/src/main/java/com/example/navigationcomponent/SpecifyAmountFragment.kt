@@ -5,55 +5,44 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SpecifyAmountFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SpecifyAmountFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class SpecifyAmountFragment : Fragment(),View.OnClickListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var buttonSend : Button
+    private lateinit var buttonCancel : Button
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_specify_amount, container, false)
+        val view = inflater.inflate(R.layout.fragment_specify_amount,container,false)
+        buttonSend = view.findViewById(R.id.send_btn)
+        buttonCancel = view.findViewById(R.id.cancel_btn)
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SpecifyAmountFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SpecifyAmountFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        buttonSend.setOnClickListener(this)
+        buttonCancel.setOnClickListener(this)
+        navController = Navigation.findNavController(view)
     }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.send_btn -> {
+              navController.navigate(R.id.action_specifyAmountFragment_to_confirmationFragment)
+            }
+            R.id.cancel_btn -> {
+              activity!!.onBackPressed()
+            }
+        }
+    }
+
+
 }
