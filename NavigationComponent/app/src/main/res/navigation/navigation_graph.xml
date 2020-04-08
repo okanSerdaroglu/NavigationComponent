@@ -82,9 +82,7 @@
         android:label="fragment_confirmation"
         tools:layout="@layout/fragment_confirmation">
 
-        <argument
-            android:name="recipient"
-            android:defaultValue="None" />
+
         <argument
             android:name="@string/amount"
             app:argType="com.example.navigationcomponent.Money" />

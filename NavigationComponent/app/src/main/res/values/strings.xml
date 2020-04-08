@@ -3,7 +3,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name">Name</string>
     <string name="next">next</string>
-    <string name="_1_was_sent_to_mitch">$1 was sent to Mitch</string>
+    <string name="_1_was_sent_to_mitch">Mitch</string>
     <string name="view_transactions">View transactions</string>
     <string name="send_money">Send money</string>
     <string name="view_balance">View balance</string>
