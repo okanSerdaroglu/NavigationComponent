@@ -5,15 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Button
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_confirmation.*
 
 
-class ConfirmationFragment : Fragment() {
+class ConfirmationFragment : Fragment(),View.OnClickListener {
 
 
     private lateinit var money: Money
     private lateinit var message: String
+    private lateinit var navController:NavController
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +36,14 @@ class ConfirmationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
+        buttonBack.setOnClickListener(this)
         confirmation_message.text = message
+    }
+
+
+    override fun onClick(v: View?) {
+        navController.navigate(R.id.action_confirmationFragment_to_chooseRecipientFragment)
     }
 
 

@@ -86,6 +86,9 @@
         <argument
             android:name="@string/amount"
             app:argType="com.example.navigationcomponent.Money" />
+        <action
+            android:id="@+id/action_confirmationFragment_to_chooseRecipientFragment"
+            app:destination="@id/chooseRecipientFragment" />
 
     </fragment>
 
