@@ -82,14 +82,22 @@
         android:label="fragment_confirmation"
         tools:layout="@layout/fragment_confirmation">
 
-
         <argument
             android:name="@string/amount"
             app:argType="com.example.navigationcomponent.Money" />
         <action
             android:id="@+id/action_confirmationFragment_to_chooseRecipientFragment"
-            app:destination="@id/chooseRecipientFragment" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/chooseRecipientFragment" />
+        <!-- I want to open ChooseRecipientFragment in my backStack.
+             For this reason I used app:popUpTo instead of app:destination
+             When you use it like this system understand that there is
+             a current instance of this fragment and I must open it without new Instance-->
 
     </fragment>
 
 </navigation>
+
